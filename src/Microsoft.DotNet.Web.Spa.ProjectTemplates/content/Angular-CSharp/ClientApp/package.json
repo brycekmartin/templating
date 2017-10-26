@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --deploy-url=/dist/ --output-hashing=media --extract-css",
     "build": "ng build --deploy-url=/dist/ --output-hashing=media --extract-css",
-    "build-ssr": "ng build --deploy-url=/dist/ --output-hashing=media --extract-css --bundle-dependencies=all --app=ssr",
+    "build:ssr": "ng build --deploy-url=/dist/ --output-hashing=media --extract-css --bundle-dependencies=all --app=ssr",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

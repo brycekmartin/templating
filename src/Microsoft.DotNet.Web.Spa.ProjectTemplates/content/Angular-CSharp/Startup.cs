@@ -40,7 +40,7 @@ namespace AngularSpa
 
             app.UseWebSockets();
 
-            app.UseSpa("/dist", configure: () =>
+            app.UseSpa(urlPrefix: "/dist", sourcePath: "ClientApp", configure: options =>
             {
                 /*
                 // If you want to enable server-side prerendering for your app, then: 
@@ -48,13 +48,13 @@ namespace AngularSpa
                 //     property to 'true' so that the entrypoint file is built on publish 
                 // [2] Uncomment this code block
                 app.UseSpaPrerendering("ClientApp/dist-server/main.bundle.js",
-                    buildOnDemand: env.IsDevelopment() ? new AngularCliBuilder("ssr") : null,
-                    excludeUrls: new[] { "/dist", "/sockjs-node" });
+                    buildOnDemand: env.IsDevelopment() ? new AngularCliBuilder(npmScript: "build:ssr") : null,
+                    excludeUrls: new[] { options.UrlPrefix, "/sockjs-node" });
                 */
 
                 if (env.IsDevelopment())
                 {
-                    app.UseAngularCliServer(sourcePath: "ClientApp");
+                    app.UseAngularCliServer(npmScript: "start");
                 }
             });
         }
